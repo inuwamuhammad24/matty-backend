@@ -5,6 +5,9 @@
   "main": "app.js",
   "author": "Inuwa",
   "license": "MIT",
+  "engines": {
+    "node": "18.13.0"
+  },
   "scripts": {
     "start": "nodemon db.js"
   },
