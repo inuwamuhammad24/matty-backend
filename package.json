@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "matty_backend",
+  "main": "app.js",
+  "author": "Inuwa",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon db.js"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.6.1",
+    "@langchain/core": "^0.3.56",
+    "@langchain/textsplitters": "^0.1.0",
+    "@xenova/transformers": "^2.17.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "langchain": "^0.3.26",
+    "mongodb": "6.8.0",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4",
+    "openai": "^4.100.0",
+    "voyageai": "^0.0.4"
+  }
+}
