@@ -9,7 +9,7 @@
     "node": "18.13.0"
   },
   "scripts": {
-    "start": "nodemon db.js"
+    "start": "node db.js"
   },
   "dependencies": {
     "@huggingface/inference": "^4.6.1",
