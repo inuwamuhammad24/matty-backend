@@ -1,6 +1,6 @@
 const externalTextData = require("../externalTextData")
 const { SpliteIntoChunks } = require("../models/SplitIntoChunks")
-const createEmbeddingsAndStore = require("../models/generateEmbeddings.js")
+const { createEmbeddingsAndStore } = require("../models/generateEmbeddings.js")
 const { queryResults } = require("../models/getRelevantInfo")
 const { genAnswer } = require("../models/generateAswer")
 
@@ -9,9 +9,13 @@ exports.home = async (req, res) => {
 }
 
 exports.genAnswer = (req, res) => {
-  queryResults(req.body.input)
+  // Get the content of the last message in the history array
+  const chatHistory = req.body.input
+  const lastChatHistory = req.body.input[req.body.input.length - 1]
+  queryResults(lastChatHistory.content)
     .then(context => {
-      console.log("generating responsne...")
+      // modify the req object to include the context retrieved to the last users message
+      lastChatHistory.context = context
       genAnswer(req.body.input, context)
         .then(response => {
           res.json(response)

@@ -35,10 +35,11 @@ exports.createEmbeddingsAndStore = data => {
           // the embeddings into the docs array
           const pipeline = await loadPipeline()
           const embedding = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2")
-          const results = await embedding(doc, { pooling: "mean", normalize: true })
+          const results = await embedding(doc.text, { pooling: "mean", normalize: true })
           docs.push({
-            textChunk: doc,
+            textChunk: doc.text,
             textEmbedding: Array.from(results.data),
+            metadata: doc.metadata,
           })
         })
       )
