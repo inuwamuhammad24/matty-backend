@@ -1,11 +1,10 @@
 const OpenAI = require("openai")
 const dotenv = require("dotenv")
-const { HfInference } = require("@huggingface/inference")
 dotenv.config()
 
 const client = new OpenAI({
   baseURL: "https://router.huggingface.co/v1",
-  apiKey: process.env.HUGGINGFACEACCESSTOKEN,
+  apiKey: process.env.HUGGINGFACEACCESSTOKEN1,
 })
 
 exports.genAnswer = (question, context) => {
@@ -16,7 +15,7 @@ exports.genAnswer = (question, context) => {
     Your responses should be in paragraphs and unordered list formatted in Markdown`
     try {
       const output = await client.chat.completions.create({
-        model: "zai-org/GLM-4.5:novita",
+        model: "google/gemma-2-2b-it",
         messages: [{ role: "system", content: prompt }].concat(question),
       })
       resolve(output.choices[0].message.content)
