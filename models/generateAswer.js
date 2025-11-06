@@ -4,7 +4,7 @@ dotenv.config()
 
 const client = new OpenAI({
   baseURL: "https://router.huggingface.co/v1",
-  apiKey: process.env.HUGGINGFACEACCESSTOKEN,
+  apiKey: process.env.HUGGINGFACEACCESSTOKEN1,
 })
 
 exports.genAnswer = (question, context) => {
@@ -15,7 +15,8 @@ exports.genAnswer = (question, context) => {
     Your responses should be in paragraphs, ordered and unordered list formatted in Markdown`
     try {
       const output = await client.chat.completions.create({
-        model: "zai-org/GLM-4.6:novita",
+        // model: "zai-org/GLM-4.6:novita",
+        model: "google/gemma-2-2b-it",
         messages: [{ role: "system", content: prompt }].concat(question),
       })
       resolve(output.choices[0].message.content)
